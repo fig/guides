@@ -1,8 +1,6 @@
 ## Deploying a Rails repository to Heroku
 
-
-
-###Ensure you have Heroku CLI installed locally.
+### Ensure you have Heroku CLI installed locally.
 See https://devcenter.heroku.com/articles/heroku-cli for installation instructions.
 To verify your CLI installation, use the `heroku --version` command:
 ```sh
