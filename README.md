@@ -5,3 +5,5 @@ Guides for various Linux &amp; Rails type tasks
 
 [Upgrading Rails](guides/rails_upgrade.md)
 
+[ActiveRecord > JSON > ActiveRecord](guides/ActiveRecord_to_JSON_to_ActiveRecord.md)
+
