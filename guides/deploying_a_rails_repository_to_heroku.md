@@ -56,4 +56,12 @@ updating 'refs/heads/master'
 ...
 ```
 
+### Migrate your database
+
+If you are using the database in your application, you need to manually migrate the database by running:
+
+```shell
+$ heroku run rake db:migrate
+```
+
 Check the logs for any issues.
