@@ -52,7 +52,7 @@ $ heroku config:set HOST_URL=$(heroku info -s | grep web_url | cut -d= -f2)
 You can now set `default_url_options` and `action_mailer.default_url_options` for production environment
 
 ```ruby
-# config/environment/production.rb
+# config/environments/production.rb
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
