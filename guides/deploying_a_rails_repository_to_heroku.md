@@ -37,13 +37,36 @@ Git remote heroku added
 
 ### Set your environment variables on Heroku
 
-If you are using Rails >= 5.2 and are using [Rails Encrypted Credentials](https://guides.rubyonrails.org/v5.2/security.html#custom-credentials). Find your master key in `config/master.key`and set it as an environment variable on Heroku.
+If you are using Rails >= 5.2 and are using [Rails Encrypted Credentials](https://guides.rubyonrails.org/v5.2/security.html#custom-credentials). Find your master key in `config/master.key`and set it as an environment variable on Heroku -
 
 ```shell
 $ heroku config:set RAILS_MASTER_KEY=5d1777d2543753a920176982b7cb60d5
 ```
 
-Otherwise, if you are using environment variables for sensitive data in your codebase, you will need to add them individually to Heroku in a similar manner.
+Some features such as ActiveStorage and ActionMailer require the host url to be set in environment configs.
+To access the host URL from inside your app set an environment variable -
+
+```shell
+$ heroku config:set HOST_URL=$(heroku info -s | grep web_url | cut -d= -f2)
+```
+You can now set `default_url_options` and `action_mailer.default_url_options` for production environment
+
+```ruby
+# config/environment/production.rb
+
+Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
+
+  # Fetch the host url from Heroku env vars
+  config.default_url_options = { host: ENV["HOST_URL"] }
+  config.action_mailer.default_url_options = { host: ENV["HOST_URL"] }
+  
+  ...
+  
+end  
+```
+
+If you are using environment variables for sensitive data in your codebase, you will need to add them individually to Heroku in a similar manner.
 
 ### Deploy your code
 
