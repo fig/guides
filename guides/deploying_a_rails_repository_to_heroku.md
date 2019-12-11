@@ -24,7 +24,7 @@ Authentication successful.
 
 ### Create the Heroku app
 
-At this stage you will want to choose the Heroku region. Unless a different region is specified, apps in the Common Runtime will be created in the `us`region. See the [Common Runtime documentation](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime) to see the list of supported regions.
+At this stage you will want to choose the Heroku region. Unless a different region is specified, apps in the Common Runtime will be created in the `us` region. See the [Common Runtime documentation](https://devcenter.heroku.com/articles/dyno-runtime#common-runtime) to see the list of supported regions.
 
 You may also want to give your app a sensible name instead of the whacky one (such as `calm-ocean-1234) ` that heroku will give you.
 
@@ -50,6 +50,7 @@ To access the host URL from inside your app set an environment variable -
 $ heroku config:set HOST_URL=$(heroku info -s | grep web_url | cut -d= -f2)
 ```
 You can now set `default_url_options` and `action_mailer.default_url_options` for production environment
+You can now set `action_mailer.default_url_options` for production environment
 
 ```ruby
 # config/environments/production.rb
@@ -57,13 +58,22 @@ You can now set `default_url_options` and `action_mailer.default_url_options` fo
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # Fetch the host url from Heroku env vars
-  config.default_url_options = { host: ENV["HOST_URL"] }
+  # set default URL options for ActionMailer
   config.action_mailer.default_url_options = { host: ENV["HOST_URL"] }
   
   ...
   
 end  
+```
+
+Set your Application's `default_url_options` to use the value defined for ActionMailer. This will be needed when using route helpers outside of Controllers / Views
+
+```ruby
+# config/routes.rb
+
+Rails.application.default_url_options = Rails.application.config.action_mailer.default_url_options
+
+...
 ```
 
 If you are using environment variables for sensitive data in your codebase, you will need to add them individually to Heroku in a similar manner.
