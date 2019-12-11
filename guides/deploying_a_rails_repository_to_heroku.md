@@ -49,7 +49,7 @@ To access the host URL from inside your app set an environment variable -
 ```shell
 $ heroku config:set HOST_URL=$(heroku info -s | grep web_url | cut -d= -f2)
 ```
-You can now set `default_url_options` and `action_mailer.default_url_options` for production environment
+
 You can now set `action_mailer.default_url_options` for production environment
 
 ```ruby
