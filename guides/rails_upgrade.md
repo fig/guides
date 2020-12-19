@@ -22,12 +22,15 @@ made manually.
 
 Run your test suite and fix any deprecation warnings
 
-Open `config/initializers/new_framework_defaults_x_x.rb` and, in conjunction with
-https://guides.rubyonrails.org/upgrading_ruby_on_rails.html, incrementally comment out each
-config, updating your code as neccessary. Run tests after each config is commented out.
+Open `config/initializers/new_framework_defaults_x_x.rb`. This file contains config options that represent a breaking
+change from the previous version. You will notice that intially they are all commented out. In conjunction with
+https://guides.rubyonrails.org/upgrading_ruby_on_rails.html, incrementally uncomment each
+config, updating your code as neccessary. Run tests after each config is uncommented.
+
+Once every new feature has been activated, you may change the `config.load_defaults x.x` in `config/application.rb`.
 
 It may be a good idea to keep the `new_framework_defaults_x_x.rb` in your repository, even
-after the entire contents are commented out, just in case.
+after you have changed `config.load_defaults x.x` just in case you need to revert that and switch a feature off again.
 
 Commit your changes
 
