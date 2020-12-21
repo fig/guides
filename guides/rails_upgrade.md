@@ -18,6 +18,15 @@ This will help you with the creation of new files and changes of old files in an
 
 Refer to https://guides.rubyonrails.org/upgrading_ruby_on_rails.html for any changes required to be made manually.
 
+Run following commands to upgrade Webpacker to the latest stable version. This process involves upgrading the gem and related JavaScript packages:
+
+```
+bundle update webpacker
+rails webpacker:install
+yarn upgrade @rails/webpacker --latest
+yarn upgrade webpack-dev-server --latest
+```
+
 Run your test suite and fix any deprecation warnings
 
 Open `config/initializers/new_framework_defaults_x_x.rb`. This file contains config options that represent a breaking change from the previous version. You will notice that intially they are all commented out. In conjunction with https://guides.rubyonrails.org/upgrading_ruby_on_rails.html, incrementally uncomment each config, updating your code as neccessary. Run tests after each config is uncommented.
