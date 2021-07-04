@@ -5,7 +5,8 @@ Change Rails gem version in Gemfile to latest patch of current minor version or,
 i.e.     **4.2.2    >    4.2.10    >    5.0.7    >    5.1.6**    ...etc
 
 Check versions at https://rubygems.org/gems/rails/versions
-It may be neccesary/advisable to upgrade other gems too
+It may be neccesary/advisable to upgrade other gems to.
+
 It may be neccesary to update the Ruby binary.
 Check https://guides.rubyonrails.org/upgrading_ruby_on_rails.html
 
