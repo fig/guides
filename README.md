@@ -8,3 +8,5 @@ Guides for various Linux &amp; Rails type tasks
 [ActiveRecord > JSON > ActiveRecord](guides/ActiveRecord_to_JSON_to_ActiveRecord.md)
 
 [Batch update `.ruby-version` files](guides/changing_ruby_version_files.md)
+
+[Brace expansion](snippets/brace_expansion.sh)
